@@ -1,0 +1,200 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background-image: url('../textures/bg.png');
+}
+.text-stroke
+{
+    text-shadow:
+        -1px -1px 0 var(--stroke-color, var(--base-color-stroke)),  
+        1px -1px 0 var(--stroke-color, var(--base-color-stroke)),
+        -1px  1px 0 var(--stroke-color, var(--base-color-stroke)),
+        1px  1px 0 var(--stroke-color, var(--base-color-stroke));
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.container[data-active="true"] {
+    display: flex;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    pointer-events: none;
+
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+    
+    --stroke-color: #ff0a0a;
+}
+
+#title img {
+    animation-name: float;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+#start {
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+}
+
+#start:hover {
+    transform: scale(1.1);
+}
+
+#lives_container {
+    box-sizing: border-box;
+    width: 100%;
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    text-align: left;
+    display: flex;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+#lives_container img {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+
+    animation: heart-beat 1s infinite;
+}
+@keyframes heart-beat {
+    0%, 20%, 40% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(1.2);
+    }
+}
+
+#timer_container {
+    box-sizing: border-box;
+    width: 100%;
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#timer_container img {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+#score {
+    box-sizing: border-box;
+    width: 100%;
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    text-align: right;
+    
+}
+
+
+.shader
+{
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    display: block;
+    position: fixed;
+
+    background-attachment: fixed;
+
+    z-index: 9999;
+}
+
+#shader_flare
+{
+
+    background-image: url('../textures/flare.png');
+    background-size: cover;
+    background-position: center top;
+
+    animation-name: flare;
+    animation-iteration-count: infinite;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+
+    left: -1px;
+}
+@keyframes flare
+{
+    0%
+    {
+        opacity: 1;
+        
+    }
+
+    25%
+    {
+        opacity: 1;
+    }
+
+    50%
+    {
+        opacity: 0.2;
+        transform: rotate(1deg);
+        transform-origin: left top;
+    }
+
+    75%
+    {
+        opacity: 1;
+    }
+
+    100%
+    {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	
+		<meta http-equiv="author" content="MysticWave - Kedron Grzegorz" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<link rel="icon" href="assets/icons/icon.ico">
+		<link href='./assets/css/fonts.css' media="screen" rel="stylesheet" type="text/css" />
+		<link href='./assets/css/main.css' media="screen" rel="stylesheet" type="text/css" />
+
+		
+		<script src="./src/helper.js" defer></script>
+		<script src="./src/background.js" defer></script>
+		<script src="./src/game.js" defer></script>
+		<script src="./src/chibi.js" defer></script>
+		<script src="./src/obstacle.js" defer></script>
+		<script src="./src/main.js" defer></script>
+
+		<title>Chibi Karolinka</title>
+	
+	</head>
+	
+	<body data-cursor='default'>
+		<div class="container" id="menu" data-active="true">
+			<div id="title">
+				<img src="assets/textures/title.png" alt="Chibi Karolinka" />
+			</div>
+
+			<img id="start" src="assets/textures/play.png" />
+			<div class="shader" id="shader_flare"></div>
+		</div>
+
+		<div class="container" id="ingame">
+			<canvas id="canvas"></canvas>
+			<div class="overlay">
+				<div id="lives_container" class="text-stroke">
+					<img src="./assets/textures/heart.png" /> x<span id="lives"></span>
+				</div>
+				<div id="timer_container" class="text-stroke">
+					<img src="./assets/textures/timer.png" /> <span id="timer"></span>
+				</div>
+				<div id="score" class="text-stroke"></div>
+			</div>
+		</div>
+
+		
+		</div>
+	</body>
+	
+</html>

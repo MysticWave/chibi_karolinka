@@ -1,0 +1,22 @@
+Chibi Karolinka
+
+Space / Up - jump
+
+Znajdzki co kazde x poziomow
+- Lizaczek kwasny
+- Bubble tea (V)
+- Tiramisu
+- Chibi nuggets
+- Sushi
+- Ramen (V)
+- Pierscionek
+
+TODO:
+- przeszkody
+- sprite skoku
+- sprite slizgu
+- mechanika slizgu
+- pierscionek chibi
+- death screen
+- records
+- zyczenia
