@@ -12,11 +12,5 @@ Znajdzki co kazde x poziomow
 - Pierscionek
 
 TODO:
-- przeszkody
-- sprite skoku
-- sprite slizgu
-- mechanika slizgu
-- pierscionek chibi
-- death screen
-- records
 - zyczenia
+- animacja serduszek po zlapaniu treasure

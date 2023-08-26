@@ -68,14 +68,16 @@ body {
     }
 }
 
-#start {
+#start, #restart {
     width: 200px;
     height: 70px;
     cursor: pointer;
     transition: transform 0.1s ease-out;
+    pointer-events: all;
 }
 
-#start:hover {
+#start:hover,
+#restart:hover {
     transform: scale(1.1);
 }
 
@@ -126,16 +128,22 @@ body {
     height: 40px;
 }
 
-#score {
+#score_container {
     box-sizing: border-box;
     width: 100%;
     
     position: fixed;
     top: 0px;
-    left: 0px;
+    right: 0px;
     padding: 10px;
-    text-align: right;
-    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#score_container img {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
 }
 
 
@@ -196,5 +204,74 @@ body {
     100%
     {
         opacity: 1;
+    }
+}
+
+
+#gameover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* #gameover .box {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(180deg, #dad6c3 15%, #0092ff 100%);
+    border: 20px solid #e42923;
+    border-radius: 25px;
+    text-align: center;
+} */
+
+#gameover_text {
+    font-size: 100px;
+    font-weight: 600;
+    font-style: italic;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#gameover .scores {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+#gameover .scores > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.particle-heart {
+    --from-x: 0px;
+    --from-y: 0px;
+    --to-x: 0px;
+    --to-y: 0px;
+
+    position: absolute;
+    top: var(--from-y);
+    left: var(--from-x);
+
+    animation-name: particle-heart;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes particle-heart {
+    0% {
+        top: var(--from-y);
+        left: var(--from-x);
+    }
+    100% {
+        top: var(--to-y);
+        left: var(--to-x);
     }
 }

@@ -2,17 +2,19 @@ class Obstacle {
     constructor() {
         this.x = Main.game.canvas.width;
         this.y = Main.game.floorHeight;
-        this.width = 20 * Main.game.globalScale;
-        this.height = 60 * Main.game.globalScale;
+        this.width = 40 * Main.game.globalScale;
+        this.height = 100 * Main.game.globalScale;
         this.collided = false;
         this.spd = 6;
+
+        this.textureSize = this.height * 1.4;
     }
 
     update() {
         this.x -= this.spd * Main.game.speedRatio;
         this.checkChibiCollision();
 
-        if (this.x + this.width < 0) this.kill();
+        if (this.x + this.textureSize + this.width < 0) this.kill();
     }
 
     onCollision() {
@@ -23,6 +25,7 @@ class Obstacle {
     checkChibiCollision() {
         if (this.collided) return;
         let chibi = Main.game.chibi;
+        if (!chibi) return;
 
         let x1 = chibi.hitBox.x;
         let y1 = chibi.hitBox.y - chibi.height;
@@ -43,13 +46,42 @@ class Obstacle {
     }
 
     render() {
+        // Main.game.ctx.save();
+        // Main.game.ctx.fillStyle = "red";
+        // Main.game.ctx.fillRect(
+        //     this.x,
+        //     this.y - this.height,
+        //     this.width,
+        //     this.height
+        // );
+        // Main.game.ctx.restore();
+
+        let opacity = 1;
+
+        if (Main.game.isChangingSeason) {
+            opacity =
+                Main.game.seasonChangeTick / Main.game.seasonChangeDuration;
+
+            Main.game.ctx.save();
+            Main.game.ctx.globalAlpha = 1 - opacity;
+            Main.game.ctx.drawImage(
+                Main.textures["obstacle_" + Main.game.previousSeason],
+                this.x - this.width * 0.8,
+                this.y - this.height,
+                this.textureSize,
+                this.textureSize
+            );
+            Main.game.ctx.restore();
+        }
+
         Main.game.ctx.save();
-        Main.game.ctx.fillStyle = "red";
-        Main.game.ctx.fillRect(
-            this.x,
+        Main.game.ctx.globalAlpha = opacity;
+        Main.game.ctx.drawImage(
+            Main.textures["obstacle_" + Main.game.season],
+            this.x - this.width * 0.8,
             this.y - this.height,
-            this.width,
-            this.height
+            this.textureSize,
+            this.textureSize
         );
         Main.game.ctx.restore();
     }
@@ -77,6 +109,32 @@ class Treasure extends Obstacle {
     onCollision() {
         this.kill();
         Main.game.chibi.lives += 3;
+
+        let heartTo = document
+            .getElementById("lives_container")
+            .getBoundingClientRect();
+
+        for (let i = 0; i < 3; i++) {
+            let heart = document.createElement("img");
+            heart.className = "particle-heart";
+
+            let x = this.x + this.width / 2 + Helper.random(0, 100) - 50;
+            let y = this.y + this.height / 2 + Helper.random(0, 100) - 50;
+
+            heart.style.setProperty("--from-x", x + "px");
+            heart.style.setProperty("--from-y", y + "px");
+
+            heart.style.setProperty("--to-x", heartTo.x + "px");
+            heart.style.setProperty("--to-y", heartTo.y + "px");
+
+            heart.src = "assets/textures/heart.png";
+
+            heart.onanimationend = () => {
+                heart.remove();
+            };
+
+            document.body.appendChild(heart);
+        }
     }
 
     render() {

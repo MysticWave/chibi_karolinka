@@ -6,7 +6,7 @@
 		<meta http-equiv="author" content="MysticWave - Kedron Grzegorz" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-		<link rel="icon" href="assets/icons/icon.ico">
+		<link rel="icon" href="assets/textures/icon.ico">
 		<link href='./assets/css/fonts.css' media="screen" rel="stylesheet" type="text/css" />
 		<link href='./assets/css/main.css' media="screen" rel="stylesheet" type="text/css" />
 
@@ -34,14 +34,33 @@
 
 		<div class="container" id="ingame">
 			<canvas id="canvas"></canvas>
-			<div class="overlay">
+			<div class="overlay" id="game_ui">
 				<div id="lives_container" class="text-stroke">
 					<img src="./assets/textures/heart.png" /> x<span id="lives"></span>
 				</div>
 				<div id="timer_container" class="text-stroke">
 					<img src="./assets/textures/timer.png" /> <span id="timer"></span>
 				</div>
-				<div id="score" class="text-stroke"></div>
+				<div id="score_container" class="text-stroke">
+					<img src="./assets/textures/score.png" /> <span id="score"></span>
+				</div>
+			</div>
+
+			<div class="overlay" id="gameover" style="display: none">
+				<div>
+					<div id="gameover_text" class="text-stroke">Game Over</div>
+					<div class="scores">
+						<div class="text-stroke">
+							<img src="./assets/textures/timer.png" /> <span id="gamover_timer">3:58</span>
+						</div>
+						<div class="text-stroke">
+							<img src="./assets/textures/score.png" /> <span id="gamover_score">123321</span>
+						</div>
+					</div>
+				</div>
+
+				<img src="./assets/textures/game_over.png" />
+				<img id="restart" src="assets/textures/restart.png" onclick="location.reload()" />
 			</div>
 		</div>
 

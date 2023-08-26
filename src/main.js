@@ -21,7 +21,7 @@ class Main {
                 event.key === "w" ||
                 event.key === " "
             ) {
-                this.game.chibi.jump();
+                this.game.chibi?.jump();
             }
         });
     }
@@ -35,6 +35,10 @@ class Main {
         ======================================== S P R I N G ==============================================
         ===================================================================================================
         */
+        Main.textures.obstacle_spring = new Image();
+        Main.textures.obstacle_spring.src =
+            "assets/textures/obstacle_spring.png";
+
         Main.textures.cloud_spring = new Image();
         Main.textures.cloud_spring.src = "assets/textures/cloud.png";
 
@@ -91,6 +95,10 @@ class Main {
         ======================================== S U M M E R ==============================================
         ===================================================================================================
         */
+        Main.textures.obstacle_summer = new Image();
+        Main.textures.obstacle_summer.src =
+            "assets/textures/obstacle_summer.png";
+
         Main.textures.cloud_summer = new Image();
         Main.textures.cloud_summer.src = "assets/textures/cloud.png";
 
@@ -147,6 +155,10 @@ class Main {
         ======================================== A U T U M N ==============================================
         ===================================================================================================
         */
+        Main.textures.obstacle_autumn = new Image();
+        Main.textures.obstacle_autumn.src =
+            "assets/textures/obstacle_autumn.png";
+
         Main.textures.cloud_autumn = new Image();
         Main.textures.cloud_autumn.src = "assets/textures/cloud.png";
 
@@ -203,6 +215,10 @@ class Main {
         ======================================== W I N T E R ==============================================
         ===================================================================================================
         */
+        Main.textures.obstacle_winter = new Image();
+        Main.textures.obstacle_winter.src =
+            "assets/textures/obstacle_winter.png";
+
         Main.textures.footstep_winter = new Image();
         Main.textures.footstep_winter.src =
             "assets/textures/footstep_winter.png";

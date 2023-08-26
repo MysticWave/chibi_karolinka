@@ -11,6 +11,7 @@ class Game {
         this.seasonChangeTick = 0;
         this.seasonChangeDuration = 120;
         this.isChangingSeason = false;
+        this.isOver = false;
 
         this.nextObstacleSpawnAt = 0;
         this.FPS = 120;
@@ -157,11 +158,19 @@ class Game {
     }
 
     over() {
-        document.querySelectorAll(".container").forEach((container) => {
-            container.dataset.active = "false";
-        });
+        this.chibi = null;
+        document.getElementById("game_ui").style.display = "none";
+        document.getElementById("gamover_score").innerText = this.score
+            .toString()
+            .padStart(6, "0");
 
-        document.getElementById("gameover").dataset.active = "true";
+        document.getElementById("gamover_timer").innerText = `${Math.floor(
+            this.time / 60
+        )
+            .toString()
+            .padStart(2, "0")}:${(this.time % 60).toString().padStart(2, "0")}`;
+
+        document.getElementById("gameover").style.display = "";
     }
 
     setNextObstacleSpawnAt() {
@@ -199,7 +208,7 @@ class Game {
                 this.score += 10;
             }
 
-            this.chibi.update();
+            this.chibi?.update();
             for (let i = this.obstacles.length - 1; i >= 0; i--) {
                 this.obstacles[i].update();
             }
@@ -234,7 +243,7 @@ class Game {
 
             // every minute
             if (this.ageInTicks % (60 * 60) === 0) {
-                this.obstacles.push(new Treasure(this.level));
+                if (this.chibi) this.obstacles.push(new Treasure(this.level));
                 this.changeSeason();
                 this.level++;
             }
@@ -268,15 +277,15 @@ class Game {
             this.clouds[i].render();
         }
 
+        this.chibi?.render();
+
         for (let i = 0; i < this.obstacles.length; i++) {
             this.obstacles[i].render();
         }
 
-        this.chibi.render();
-
         let lives_container = document.getElementById("lives");
-        if (lives_container.innerText != this.chibi.lives) {
-            lives_container.innerText = this.chibi.lives;
+        if (lives_container.innerText != this.chibi?.lives) {
+            lives_container.innerText = this.chibi?.lives;
         }
 
         let timer_container = document.getElementById("timer");
