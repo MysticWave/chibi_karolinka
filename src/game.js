@@ -299,9 +299,9 @@ class Game {
 
             this.spawnClouds();
 
-            // every 6 seconds
-            if (this.ageInTicks % (60 * 6) === 0) {
-                this.speedRatio += 0.05;
+            // every 5 seconds
+            if (this.ageInTicks % (60 * 5) === 0) {
+                this.speedRatio += 0.0375;
             }
 
             // every minute
