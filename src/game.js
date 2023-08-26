@@ -13,6 +13,13 @@ class Game {
         this.isChangingSeason = false;
         this.isOver = false;
 
+        let treasures = localStorage.getItem("treasures");
+        if (treasures) {
+            this.treasures = JSON.parse(treasures);
+        } else {
+            this.treasures = {};
+        }
+
         this.nextObstacleSpawnAt = 0;
         this.FPS = 120;
         this.frameInterval = 1000 / this.FPS;
@@ -131,7 +138,31 @@ class Game {
         this.backgroundGradient.winter.addColorStop(0, "#e9f2f9");
         this.backgroundGradient.winter.addColorStop(1, "#c2e3f9");
 
+        this.updateTreasureUI();
         this.update();
+    }
+
+    claimTreasure(level) {
+        this.treasures[level] = true;
+        this.save();
+
+        this.updateTreasureUI();
+    }
+
+    updateTreasureUI() {
+        for (let level = 1; level <= 6; level++) {
+            let img = document.getElementById("treasure_" + level);
+
+            if (this.treasures[level]) {
+                img.dataset.claimed = "true";
+            } else {
+                img.dataset.claimed = "false";
+            }
+        }
+    }
+
+    save() {
+        localStorage.setItem("treasures", JSON.stringify(this.treasures));
     }
 
     changeSeason() {
@@ -158,6 +189,26 @@ class Game {
     }
 
     over() {
+        let bestRun = localStorage.getItem("bestRun");
+        if (bestRun) {
+            bestRun = JSON.parse(bestRun);
+        } else {
+            bestRun = {
+                score: null,
+                time: null,
+            };
+        }
+
+        if (this.score > bestRun.score ?? 0) {
+            bestRun.score = this.score;
+        }
+
+        if (this.time > bestRun.time ?? 0) {
+            bestRun.time = this.time;
+        }
+
+        localStorage.setItem("bestRun", JSON.stringify(bestRun));
+
         this.chibi = null;
         document.getElementById("game_ui").style.display = "none";
         document.getElementById("gamover_score").innerText = this.score
@@ -169,6 +220,18 @@ class Game {
         )
             .toString()
             .padStart(2, "0")}:${(this.time % 60).toString().padStart(2, "0")}`;
+
+        document.getElementById("gamover_score_best").innerText = bestRun.score
+            .toString()
+            .padStart(6, "0");
+
+        document.getElementById("gamover_timer_best").innerText = `${Math.floor(
+            bestRun.time / 60
+        )
+            .toString()
+            .padStart(2, "0")}:${(bestRun.time % 60)
+            .toString()
+            .padStart(2, "0")}`;
 
         document.getElementById("gameover").style.display = "";
     }

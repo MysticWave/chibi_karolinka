@@ -97,6 +97,8 @@ class Obstacle {
 class Treasure extends Obstacle {
     constructor(level) {
         super();
+        if (level > 6) level = 6;
+
         this.level = level;
         this.width = 60 * Main.game.globalScale;
         this.height = 60 * Main.game.globalScale;
@@ -104,19 +106,73 @@ class Treasure extends Obstacle {
         this.y = Main.game.floorHeight - Main.game.chibi.height - this.height;
         this.spd = 3;
         this.texture = Main.textures.ramen;
+
+        switch (level) {
+            case 1:
+                this.texture = Main.textures.bubble_tea;
+                break;
+            case 2:
+                this.texture = Main.textures.tiramisu;
+                break;
+            case 3:
+                this.texture = Main.textures.lollipop;
+                break;
+            case 4:
+                this.texture = Main.textures.sushi;
+                break;
+            case 5:
+                this.texture = Main.textures.ramen;
+                break;
+            case 6:
+                this.texture = Main.textures.ring;
+                break;
+        }
     }
 
     onCollision() {
         this.kill();
         Main.game.chibi.lives += 3;
+        Main.game.score += 100 * this.level;
 
+        this.summonTreasure();
+        this.summonHearts();
+    }
+
+    summonTreasure() {
+        let treasureTo = document
+            .getElementById("treasure_" + this.level)
+            .getBoundingClientRect();
+
+        let treasure = document.createElement("img");
+        treasure.className = "particle";
+
+        let x = this.x + this.width / 2 + Helper.random(0, 100) - 50;
+        let y = this.y + this.height / 2 + Helper.random(0, 100) - 50;
+
+        treasure.style.setProperty("--from-x", x + "px");
+        treasure.style.setProperty("--from-y", y + "px");
+
+        treasure.style.setProperty("--to-x", treasureTo.x + "px");
+        treasure.style.setProperty("--to-y", treasureTo.y + "px");
+
+        treasure.src = this.texture.src;
+
+        treasure.onanimationend = () => {
+            treasure.remove();
+            Main.game.claimTreasure(this.level);
+        };
+
+        document.body.appendChild(treasure);
+    }
+
+    summonHearts() {
         let heartTo = document
             .getElementById("lives_container")
             .getBoundingClientRect();
 
         for (let i = 0; i < 3; i++) {
             let heart = document.createElement("img");
-            heart.className = "particle-heart";
+            heart.className = "particle";
 
             let x = this.x + this.width / 2 + Helper.random(0, 100) - 50;
             let y = this.y + this.height / 2 + Helper.random(0, 100) - 50;

@@ -44,17 +44,38 @@
 				<div id="score_container" class="text-stroke">
 					<img src="./assets/textures/score.png" /> <span id="score"></span>
 				</div>
+
+				<div id="treasures_container">
+					<img id="treasure_1" src="./assets/textures/bubble_tea.png" />
+					<img id="treasure_2" src="./assets/textures/tiramisu.png" />
+					<img id="treasure_3" src="./assets/textures/lollipop.png" />
+					<img id="treasure_4" src="./assets/textures/sushi.png" />
+					<img id="treasure_5" src="./assets/textures/ramen.png" />
+					<img id="treasure_6" src="./assets/textures/ring.png" />
+				</div>
 			</div>
 
 			<div class="overlay" id="gameover" style="display: none">
 				<div>
 					<div id="gameover_text" class="text-stroke">Game Over</div>
 					<div class="scores">
-						<div class="text-stroke">
-							<img src="./assets/textures/timer.png" /> <span id="gamover_timer">3:58</span>
+						<div>
+							<div class="text-stroke">
+								<img src="./assets/textures/timer.png" /> <span id="gamover_timer">-</span>
+							</div>
+							<div class="text-stroke">
+								<img src="./assets/textures/score.png" /> <span id="gamover_score">-</span>
+							</div>
 						</div>
-						<div class="text-stroke">
-							<img src="./assets/textures/score.png" /> <span id="gamover_score">123321</span>
+
+						<div id="record-divider" class="text-stroke">---- Record ----</div>
+						<div>
+							<div class="text-stroke">
+								<img src="./assets/textures/timer.png" /> <span id="gamover_timer_best">-</span>
+							</div>
+							<div class="text-stroke">
+								<img src="./assets/textures/score.png" /> <span id="gamover_score_best">-</span>
+							</div>
 						</div>
 					</div>
 				</div>

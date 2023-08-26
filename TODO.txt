@@ -3,14 +3,12 @@ Chibi Karolinka
 Space / Up - jump
 
 Znajdzki co kazde x poziomow
-- Lizaczek kwasny
 - Bubble tea (V)
-- Tiramisu
-- Chibi nuggets
-- Sushi
+- Tiramisu (v)
+- Lizaczek kwasny (v)
+- Sushi (v)
 - Ramen (V)
-- Pierscionek
+- Pierscionek (v)
 
 TODO:
 - zyczenia
-- animacja serduszek po zlapaniu treasure

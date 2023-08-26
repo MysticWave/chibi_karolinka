@@ -280,6 +280,21 @@ class Main {
         Main.textures.shine = new Image();
         Main.textures.shine.src = "assets/textures/shine.png";
 
+        Main.textures.bubble_tea = new Image();
+        Main.textures.bubble_tea.src = "assets/textures/bubble_tea.png";
+
+        Main.textures.tiramisu = new Image();
+        Main.textures.tiramisu.src = "assets/textures/tiramisu.png";
+
+        Main.textures.lollipop = new Image();
+        Main.textures.lollipop.src = "assets/textures/lollipop.png";
+
+        Main.textures.sushi = new Image();
+        Main.textures.sushi.src = "assets/textures/sushi.png";
+
+        Main.textures.ring = new Image();
+        Main.textures.ring.src = "assets/textures/ring.png";
+
         Main.textures.ramen = new Image();
         Main.textures.ramen.src = "assets/textures/ramen.png";
 
