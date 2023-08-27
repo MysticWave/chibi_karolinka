@@ -302,3 +302,47 @@ body {
     filter: brightness(1);
     opacity: 1;
 }
+
+
+#wishes {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.75);
+    color: white;
+    overflow: hidden;
+}
+
+#wishes .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 100%;
+
+    animation-name: wishes;
+    animation-duration: 90s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    text-align: left;
+}
+#wishes .content > h1 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#wishes .content > h2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    line-height: 150%;
+}
+
+@keyframes wishes {
+    0% {
+        margin-top: 100%;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}

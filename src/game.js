@@ -233,7 +233,18 @@ class Game {
             .toString()
             .padStart(2, "0")}`;
 
-        document.getElementById("gameover").style.display = "";
+        if (Main.showWishes && localStorage.getItem("wishes") != "true") {
+            document
+                .getElementById("wishes")
+                .addEventListener("animationend", () => {
+                    document.getElementById("gameover").style.display = "";
+                    document.getElementById("wishes").style.display = "none";
+                    localStorage.setItem("wishes", "true");
+                });
+            document.getElementById("wishes").dataset.active = "true";
+        } else {
+            document.getElementById("gameover").style.display = "";
+        }
     }
 
     setNextObstacleSpawnAt() {

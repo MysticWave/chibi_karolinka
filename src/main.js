@@ -3,6 +3,7 @@ class Main {
         Main.textures = {};
         Main.sounds = {};
         Main.DELTA = 60 / 1000;
+        Main.showWishes = false;
 
         Main.initEventListeners();
         Main.loadAssets();
