@@ -136,7 +136,7 @@ class Game {
             this.canvas.height
         );
         this.backgroundGradient.winter.addColorStop(0, "#e9f2f9");
-        this.backgroundGradient.winter.addColorStop(1, "#c2e3f9");
+        this.backgroundGradient.winter.addColorStop(1, "#B8CCD8");
 
         this.updateTreasureUI();
         this.update();

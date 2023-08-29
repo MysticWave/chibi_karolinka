@@ -22,7 +22,19 @@ class Main {
                 event.key === "w" ||
                 event.key === " "
             ) {
-                this.game.chibi?.jump();
+                if (!this.game.chibi) return;
+                this.game.chibi.jumpKeyDown = true;
+            }
+        });
+
+        window.addEventListener("keyup", (event) => {
+            if (
+                event.key === "ArrowUp" ||
+                event.key === "w" ||
+                event.key === " "
+            ) {
+                if (!this.game.chibi) return;
+                this.game.chibi.jumpKeyDown = false;
             }
         });
     }

@@ -6,6 +6,7 @@ class Chibi {
         this.width = 200 * Main.game.globalScale;
         this.height = 200 * Main.game.globalScale;
         this.texture = "chibi";
+        this.jumpKeyDown = false;
 
         this.jumpHeight = this.height * 1.5;
         this.jumpDuration = 20;
@@ -54,6 +55,10 @@ class Chibi {
                 this.footSteps.splice(i, 1);
                 i--;
             }
+        }
+
+        if (this.jumpKeyDown) {
+            this.jump();
         }
 
         let ratio = 0;
